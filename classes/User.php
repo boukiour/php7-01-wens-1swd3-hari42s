@@ -67,4 +67,24 @@ class User extends DbConfig
             header('Location: index.php');
         }
     }
+
+    public function read($id)
+    {
+            try {
+                $sql = "SELECT * FROM users WHERE id = :id";
+
+                $stmt = self::connect()->prepare($sql);
+                $stmt->bindParam(':id', $id);
+
+                if (!$stmt->execute()) {
+                    throw new PDOException("read mislukt..");
+                }
+
+                $result = $stmt->fetch();
+                return $result;
+            } catch (Exception $e) {
+                $e->getMessage();
+            }
+        }
+    }
 }
