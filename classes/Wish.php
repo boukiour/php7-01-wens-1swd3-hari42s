@@ -15,7 +15,7 @@ class Wish extends DbConfig
 
             $stmt = self::connect()->prepare($sql);
             $stmt->bindParam(':title', $this->title);
-            $stmt->bindParam(':desc', $this->description);
+            $stmt->bindParam(':description', $this->description);
             $stmt->bindParam(':user_id', $_SESSION['user']['id']);
 
             if (!$stmt->execute()) {
@@ -75,7 +75,7 @@ class Wish extends DbConfig
             $stmt = self::connect()->prepare($sql);
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':title', $this->title);
-            $stmt->bindParam(':desc', $this->description);
+            $stmt->bindParam(':description', $this->description);
 
             if (!$stmt->execute()) {
                 throw new Exception("Error");
