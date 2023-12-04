@@ -2,21 +2,21 @@
 
 class Wish extends DbConfig
 {
-    private $wish_name;
-    private $wish_desc;
+    private $title;
+    private $desc;
     public function create($data)
     {
         try {
 
-            $this->wish_name = $data['wish_name'];
-            $this->wish_desc = $data['wish_desc'];
+            $this->title = $data['wish_name'];
+            $this->desc = $data['wish_desc'];
 
-            $sql = "INSERT INTO wishes(wish_name, wish_desc, userID) VALUES(:wish_name, :wish_desc, :userID)";
+            $sql = "INSERT INTO wishes(title, desc, user_id) VALUES(:title, :desc, :user_id)";
 
             $stmt = self::connect()->prepare($sql);
-            $stmt->bindParam(':wish_name', $this->wish_name);
-            $stmt->bindParam(':wish_desc', $this->wish_desc);
-            $stmt->bindParam(':userID', $_SESSION['user']['ID']);
+            $stmt->bindParam(':title', $this->title);
+            $stmt->bindParam(':desc', $this->desc);
+            $stmt->bindParam(':user_id', $_SESSION['user']['id']);
 
             if (!$stmt->execute()) {
                 throw new Exception("Connection error");
@@ -67,15 +67,15 @@ class Wish extends DbConfig
     public function update($data, $id)
     {
         try {
-            $this->wish_name = $data['wish_name'];
-            $this->wish_desc = $data['wish_desc'];
+            $this->title = $data['wish_name'];
+            $this->desc = $data['wish_desc'];
 
-            $sql = "UPDATE wishes SET wish_name = :wish_name, wish_desc = :wish_desc WHERE ID = :ID";
+            $sql = "UPDATE wishes SET title = :title, desc = :desc WHERE id = :id";
 
             $stmt = self::connect()->prepare($sql);
-            $stmt->bindParam(':ID', $id);
-            $stmt->bindParam(':wish_name', $this->wish_name);
-            $stmt->bindParam(':wish_desc', $this->wish_desc);
+            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':title', $this->title);
+            $stmt->bindParam(':desc', $this->desc);
 
             if (!$stmt->execute()) {
                 throw new Exception("Error");
@@ -88,10 +88,10 @@ class Wish extends DbConfig
     public function delete($id)
     {
         try {
-            $sql = "DELETE FROM wishes WHERE ID = :ID";
+            $sql = "DELETE FROM wishes WHERE id = :id";
 
             $stmt = self::connect()->prepare($sql);
-            $stmt->bindParam(':ID', $id);
+            $stmt->bindParam(':id', $id);
 
             if (!$stmt->execute()) {
                 throw new Exception("Error");
