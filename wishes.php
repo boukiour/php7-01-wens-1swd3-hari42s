@@ -33,8 +33,8 @@ $wish = new Wish();
                     <td>' . $p->wish_desc . '</td>
                     <td>
                         <a href="wish.php/?id=' . $p->ID . '" class="text-success ms-2"><i class="fa-solid fa-eye"></i></a>
-                        <a href="form.php/?id=' . $p->ID . '" class="text-primary ms-2"><i class="fa-regular fa-pen-to-square"></i></a>
-                        <a href="form.php/?delete=' . $p->ID . '" class="text-danger ms-2"><i class="fa-solid fa-trash-can"></i></a>
+                        <a href="form/form.update.php/?id=' . $p->ID . '" class="text-primary ms-2"><i class="fa-regular fa-pen-to-square"></i></a>
+                        <a href="form/form.delete.php/?id=' . $p->ID . '" class="text-danger ms-2"><i class="fa-solid fa-trash-can"></i></a>
                     </td>
                   </tr>
 				';
