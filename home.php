@@ -18,15 +18,17 @@ $wishes = Wish::readAll();
 <main class="container">
   <h1 class="h3 mt-3 fw-normal">Home</h1>
   <div class="p-3 mb-3 border border-dark rounded">
-    <h5 class="card-title"><?= $_SESSION['user']['username'].' '.$_SESSION['user']['ID'];?></h5>
+    <h5 class="card-title"><?= $_SESSION['user']['username'] . ' ' . $_SESSION['user']['ID']; ?></h5>
   </div>
 
-  <h2 class="fw-bold text-left my-5">
-        <?php 
-            foreach ($wishes as $wish) {
-                echo $wish->wish_name.'<br>'.$wish->wish_desc;
-            }
-        ?>
-    </h2>
+  <div class="py-3">
+  <h1 class="h3 mt-3 fw-normal">All Wishes</h1>
+    <?php
+    foreach ($wishes as $wish) {
+      echo '<h3 class="fw-bold text-primary">' . $wish->wish_name . '</h3>';
+      echo '<p class="fw-semibold text-muted">' . $wish->wish_desc . '</p>';
+    }
+    ?>
+  </div>
 </main>
 <?php require_once 'includes/footer.php' ?>
