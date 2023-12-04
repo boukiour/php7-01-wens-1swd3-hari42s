@@ -14,12 +14,13 @@ $data = Wish::readAll();
 <?php require_once 'includes/header.php' ?>
 <?php require_once 'includes/navbar.php' ?>
 <div class="container">
-    <h1 class="fw-bold text-center my-5">
-        <?php 
-            foreach ($data as $key) {
-                echo $key->wish_name.'<br>'.$key->wish_desc;
-            }
+    <div class="py-3">
+        <?php
+        foreach ($data as $key) {
+            echo '<h3 class="fw-bold text-primary">' . $key->wish_name . '</h3>';
+            echo '<p class="fw-semibold text-muted">' . $key->wish_desc . '</p>';
+        }
         ?>
-    </h1>
+    </div>
 </div>
 <?php require_once 'includes/footer.php' ?>
