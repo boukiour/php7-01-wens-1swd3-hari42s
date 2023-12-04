@@ -59,4 +59,12 @@ class User extends DbConfig
             $e->getMessage();
         }
     }
+
+    public function logout()
+    {
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            session_destroy();
+            header('Location: index.php');
+        }
+    }
 }
