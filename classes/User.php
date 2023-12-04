@@ -131,4 +131,22 @@ class User extends DbConfig
             return $e->getMessage();
         }
     }
+
+    public function delete($id)
+    {
+        try {
+            $sql = "DELETE FROM users WHERE id = :id";
+
+            $stmt = self::connect()->prepare($sql);
+            $stmt->bindParam(':id', $id);
+
+            if (!$stmt->execute()) {
+                throw new Exception("Error, delete mislukt.");
+            }
+
+            return header('Location: index.php');
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
+    }
 }
