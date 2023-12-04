@@ -9,7 +9,7 @@ if (!DbConfig::getSession()) {
 $wish = new Wish();
 
 if (isset($_POST['submit'])) {
-    $wish->delete($_GET['delete']);
+    echo $wish->delete($_GET['id']);
     header('Location: ../../wishes.php');
 }
 

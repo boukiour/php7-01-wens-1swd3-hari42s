@@ -88,10 +88,10 @@ class Wish extends DbConfig
     public function delete($id)
     {
         try {
-            $sql = "DELETE FROM wishes WHERE id = :id";
+            $sql = "DELETE FROM wishes WHERE ID = :ID";
 
             $stmt = self::connect()->prepare($sql);
-            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':ID', $id);
 
             if (!$stmt->execute()) {
                 throw new Exception("Error");
