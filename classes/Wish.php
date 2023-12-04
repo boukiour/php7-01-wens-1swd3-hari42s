@@ -67,18 +67,15 @@ class Wish extends DbConfig
     public function update($data, $id)
     {
         try {
-
             $this->wish_name = $data['wish_name'];
             $this->wish_desc = $data['wish_desc'];
 
-
-            $sql = "UPDATE wishes SET wish_name = :title, wish_desc = :desc, userID = :userID WHERE id = :id";
+            $sql = "UPDATE wishes SET wish_name = :wish_name, wish_desc = :wish_desc WHERE ID = :ID";
 
             $stmt = self::connect()->prepare($sql);
-            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':ID', $id);
             $stmt->bindParam(':wish_name', $this->wish_name);
             $stmt->bindParam(':wish_desc', $this->wish_desc);
-            $stmt->bindParam(':userID', $_SESSION['user']['ID']);
 
             if (!$stmt->execute()) {
                 throw new Exception("Error");
