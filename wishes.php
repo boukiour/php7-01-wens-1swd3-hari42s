@@ -28,13 +28,13 @@ $wish = new Wish();
                 foreach ($wishes as $p) {
                     echo '
                   <tr>
-                    <th scope="row">' . $p->ID . '</th>
-                    <td>' . $p->wish_name . '</td>
-                    <td>' . $p->wish_desc . '</td>
+                    <th scope="row">' . $p->id . '</th>
+                    <td>' . $p->title . '</td>
+                    <td>' . $p->description . '</td>
                     <td>
-                        <a href="wish.php/?id=' . $p->ID . '" class="text-success ms-2"><i class="fa-solid fa-eye"></i></a>
-                        <a href="form/form.update.php/?id=' . $p->ID . '" class="text-primary ms-2"><i class="fa-regular fa-pen-to-square"></i></a>
-                        <a href="form/form.delete.php/?id=' . $p->ID . '" class="text-danger ms-2"><i class="fa-solid fa-trash-can"></i></a>
+                        <a href="wish.php/?id=' . $p->id . '" class="text-success ms-2"><i class="fa-solid fa-eye"></i></a>
+                        <a href="form/form.update.php/?id=' . $p->id . '" class="text-primary ms-2"><i class="fa-regular fa-pen-to-square"></i></a>
+                        <a href="form/form.delete.php/?id=' . $p->id . '" class="text-danger ms-2"><i class="fa-solid fa-trash-can"></i></a>
                     </td>
                   </tr>
 				';

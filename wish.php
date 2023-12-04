@@ -23,8 +23,8 @@ if (isset($_GET['back'])) {
 <div class="container d-flex flex-column align-items-center justify-content-center mt-5">
     <div class="card" style="width: 18rem;">
         <div class="card-body">
-            <h3 class="card-text text-primary text-bold"> <?= $data->wish_name ?></h3>
-            <h5 class="card-text text-muted"> <?= $data->wish_desc ?></h5>
+            <h3 class="card-text text-primary text-bold"> <?= $data->title ?></h3>
+            <h5 class="card-text text-muted"> <?= $data->description ?></h5>
         </div>
         <a href="?back" class="btn btn-outline-dark w-100 mt-5"><i class="fa-solid fa-arrow-left"></i>Back</a>
     </div>

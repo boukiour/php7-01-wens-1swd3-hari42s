@@ -26,7 +26,7 @@ $wishes = Wish::readAll();
     <?php
     foreach ($wishes as $wish) {
       echo '<h3 class="fw-bold text-primary">' . $wish->title . '</h3>';
-      echo '<p class="fw-semibold text-muted">' . $wish->desc . '</p>';
+      echo '<p class="fw-semibold text-muted">' . $wish->description . '</p>';
     }
     ?>
   </div>
