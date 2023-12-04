@@ -46,4 +46,21 @@ class Wish extends DbConfig
             $e->getMessage();
         }
     }
+
+    public static function readAll()
+    {
+        try {
+            $sql = "SELECT * FROM wishes";
+
+            $stmt = self::connect()->prepare($sql);
+            if (!$stmt->execute()) {
+                throw new PDOException("Error");
+            }
+
+            $result = $stmt->fetchAll();
+            return $result;
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
+    }
 }
