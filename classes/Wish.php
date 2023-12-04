@@ -3,19 +3,19 @@
 class Wish extends DbConfig
 {
     private $title;
-    private $desc;
+    private $description;
     public function create($data)
     {
         try {
 
             $this->title = $data['wish_name'];
-            $this->desc = $data['wish_desc'];
+            $this->description = $data['wish_desc'];
 
-            $sql = "INSERT INTO wishes(title, desc, user_id) VALUES(:title, :desc, :user_id)";
+            $sql = "INSERT INTO wishes(title, description, user_id) VALUES(:title, :description, :user_id)";
 
             $stmt = self::connect()->prepare($sql);
             $stmt->bindParam(':title', $this->title);
-            $stmt->bindParam(':desc', $this->desc);
+            $stmt->bindParam(':desc', $this->description);
             $stmt->bindParam(':user_id', $_SESSION['user']['id']);
 
             if (!$stmt->execute()) {
@@ -68,14 +68,14 @@ class Wish extends DbConfig
     {
         try {
             $this->title = $data['wish_name'];
-            $this->desc = $data['wish_desc'];
+            $this->description = $data['wish_desc'];
 
-            $sql = "UPDATE wishes SET title = :title, desc = :desc WHERE id = :id";
+            $sql = "UPDATE wishes SET title = :title, description = :description WHERE id = :id";
 
             $stmt = self::connect()->prepare($sql);
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':title', $this->title);
-            $stmt->bindParam(':desc', $this->desc);
+            $stmt->bindParam(':desc', $this->description);
 
             if (!$stmt->execute()) {
                 throw new Exception("Error");
