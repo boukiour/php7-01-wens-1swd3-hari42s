@@ -69,7 +69,7 @@ class User extends DbConfig
     }
 
     public function read($id)
-    {
+    { 
             try {
                 $sql = "SELECT * FROM users WHERE id = :id";
 
@@ -85,6 +85,24 @@ class User extends DbConfig
             } catch (Exception $e) {
                 $e->getMessage();
             }
+    }
+
+    public static function readAll()
+    { {
+            try {
+                $sql = "SELECT * FROM users";
+
+                $stmt = self::connect()->prepare($sql);
+                if (!$stmt->execute()) {
+                    throw new PDOException("read mislukt..");
+                }
+
+                $result = $stmt->fetchAll();
+                return $result;
+            } catch (Exception $e) {
+                $e->getMessage();
+            }
         }
     }
 }
+
