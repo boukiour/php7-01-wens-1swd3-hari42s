@@ -10,7 +10,7 @@ $wish = new Wish();
 
 if (isset($_POST['submit'])) {
     $wish->delete($_GET['delete']);
-    header('Location: ../wishes.php');
+    header('Location: ../../wishes.php');
 }
 
 if (isset($_GET['back'])) {
