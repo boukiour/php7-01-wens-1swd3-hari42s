@@ -27,4 +27,23 @@ class Wish extends DbConfig
             return $e->getMessage();
         }
     }
+
+    public function read($id)
+    {
+        try {
+            $sql = "SELECT * FROM wishes where id = :id";
+
+            $stmt = self::connect()->prepare($sql);
+            $stmt->bindParam(':id', $id);
+
+            if (!$stmt->execute()) {
+                throw new PDOException("Error");
+            }
+
+            $result = $stmt->fetch();
+            return $result;
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
+    }
 }
