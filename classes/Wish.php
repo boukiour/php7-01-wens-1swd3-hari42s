@@ -66,25 +66,43 @@ class Wish extends DbConfig
 
     public function update($data, $id)
     {
-            try {
+        try {
 
-                $this->title = $data['title'];
-                $this->desc = $data['description'];
+            $this->title = $data['title'];
+            $this->desc = $data['description'];
 
 
-                $sql = "UPDATE wishes SET wish_name = :title, wish_desc = :desc, userID = :userID WHERE id = :id";
+            $sql = "UPDATE wishes SET wish_name = :title, wish_desc = :desc, userID = :userID WHERE id = :id";
 
-                $stmt = self::connect()->prepare($sql);
-                $stmt->bindParam(':id', $id);
-                $stmt->bindParam(':title', $this->title);
-                $stmt->bindParam(':desc', $this->desc);
-                $stmt->bindParam(':userID', $_SESSION['user']['ID']);
+            $stmt = self::connect()->prepare($sql);
+            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':title', $this->title);
+            $stmt->bindParam(':desc', $this->desc);
+            $stmt->bindParam(':userID', $_SESSION['user']['ID']);
 
-                if (!$stmt->execute()) {
-                    throw new Exception("Error");
-                }
-            } catch (Exception $e) {
-                return $e->getMessage();
+            if (!$stmt->execute()) {
+                throw new Exception("Error");
             }
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function delete($id)
+    {
+        try {
+            $sql = "DELETE FROM wishes WHERE id = :id";
+
+            $stmt = self::connect()->prepare($sql);
+            $stmt->bindParam(':id', $id);
+
+            if (!$stmt->execute()) {
+                throw new Exception("Error");
+            }
+
+            return;
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
     }
 }
