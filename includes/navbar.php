@@ -1,8 +1,5 @@
 <?php
 
-require_once 'classes/DbConfig.php';
-require_once 'classes/User.php';
-
 if (isset($_GET['logout'])) {
     $user->logout();
 }
@@ -28,7 +25,7 @@ if (isset($_GET['logout'])) {
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="wishes.php">View</a></li>
-                            <li><a class="dropdown-item" href="form.php">Create</a></li>
+                            <li><a class="dropdown-item" href="./form/form.create.php">Create</a></li>
                         </ul>
                     </li>
                 </ul>
