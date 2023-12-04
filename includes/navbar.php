@@ -1,5 +1,7 @@
 <?php
-
+require_once 'classes/DbConfig.php';
+require_once 'classes/User.php';
+$user = new User();
 if (isset($_GET['logout'])) {
     $user->logout();
 }
