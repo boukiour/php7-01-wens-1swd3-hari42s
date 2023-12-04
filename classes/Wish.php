@@ -2,27 +2,27 @@
 
 class Wish extends DbConfig
 {
-    private $title;
-    private $desc;
+    private $wish_name;
+    private $wish_desc;
     public function create($data)
     {
         try {
 
-            $this->title = $data['title'];
-            $this->desc = $data['description'];
+            $this->wish_name = $data['wish_name'];
+            $this->wish_desc = $data['wish_desc'];
 
             $sql = "INSERT INTO wishes(wish_name, wish_desc, userID) VALUES(:wish_name, :wish_desc, :userID)";
 
             $stmt = self::connect()->prepare($sql);
-            $stmt->bindParam(':wish_name', $this->title);
-            $stmt->bindParam('::wish_desc', $this->desc);
+            $stmt->bindParam(':wish_name', $this->wish_name);
+            $stmt->bindParam(':wish_desc', $this->wish_desc);
             $stmt->bindParam(':userID', $_SESSION['user']['ID']);
 
             if (!$stmt->execute()) {
                 throw new Exception("Connection error");
             }
 
-            return 'product created';
+            return 'wish created';
         } catch (Exception $e) {
             return $e->getMessage();
         }
@@ -68,16 +68,16 @@ class Wish extends DbConfig
     {
         try {
 
-            $this->title = $data['title'];
-            $this->desc = $data['description'];
+            $this->wish_name = $data['wish_name'];
+            $this->wish_desc = $data['wish_desc'];
 
 
             $sql = "UPDATE wishes SET wish_name = :title, wish_desc = :desc, userID = :userID WHERE id = :id";
 
             $stmt = self::connect()->prepare($sql);
             $stmt->bindParam(':id', $id);
-            $stmt->bindParam(':title', $this->title);
-            $stmt->bindParam(':desc', $this->desc);
+            $stmt->bindParam(':wish_name', $this->wish_name);
+            $stmt->bindParam(':wish_desc', $this->wish_desc);
             $stmt->bindParam(':userID', $_SESSION['user']['ID']);
 
             if (!$stmt->execute()) {
