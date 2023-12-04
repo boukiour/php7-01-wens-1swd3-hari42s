@@ -17,8 +17,8 @@ $data = Wish::readAll();
     <div class="py-3">
         <?php
         foreach ($data as $key) {
-            echo '<h3 class="fw-bold text-primary">' . $key->wish_name . '</h3>';
-            echo '<p class="fw-semibold text-muted">' . $key->wish_desc . '</p>';
+            echo '<h3 class="fw-bold text-primary">' . $key->title . '</h3>';
+            echo '<p class="fw-semibold text-muted">' . $key->desc . '</p>';
         }
         ?>
     </div>
