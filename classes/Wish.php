@@ -63,4 +63,28 @@ class Wish extends DbConfig
             $e->getMessage();
         }
     }
+
+    public function update($data, $id)
+    {
+            try {
+
+                $this->title = $data['title'];
+                $this->desc = $data['description'];
+
+
+                $sql = "UPDATE wishes SET wish_name = :title, wish_desc = :desc, userID = :userID WHERE id = :id";
+
+                $stmt = self::connect()->prepare($sql);
+                $stmt->bindParam(':id', $id);
+                $stmt->bindParam(':title', $this->title);
+                $stmt->bindParam(':desc', $this->desc);
+                $stmt->bindParam(':userID', $_SESSION['user']['ID']);
+
+                if (!$stmt->execute()) {
+                    throw new Exception("Error");
+                }
+            } catch (Exception $e) {
+                return $e->getMessage();
+            }
+    }
 }
