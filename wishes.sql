@@ -1,0 +1,18 @@
+DROP DATABASE IF EXISTS wishes;
+CREATE DATABASE wishes;
+
+CREATE TABLE wishes.users (
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    username VARCHAR(100),
+    password VARCHAR(255),
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE wishes.wishes (
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    title VARCHAR(100),
+    description VARCHAR(255),
+    user_id INT UNSIGNED NOT NULL,
+	PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
