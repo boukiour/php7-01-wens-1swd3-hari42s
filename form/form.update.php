@@ -31,12 +31,12 @@
                     <h1 class="h3 mb-3 fw-normal">Update Wish</h1>
                     <a href="?back" class="btn btn-outline-dark w-100 mt-5"><i class="fa-solid fa-arrow-left"></i>Back</a>
                     <div class="form-floating m-2">
-                        <input type="text" class="form-control" name="wish_name" id="floatingTitle" value="<?= $data->wish_name ?>">
+                        <input type="text" class="form-control" name="wish_name" id="floatingTitle" value="<?= $data->title ?>">
                         <label for="floatingTitle">Title</label>
                     </div>
 
                     <div class="form-floating m-2">
-                        <input type="text" class="form-control" name="wish_desc" id="floatingDesc" value="<?= $data->wish_desc ?>">
+                        <input type="text" class="form-control" name="wish_desc" id="floatingDesc" value="<?= $data->description ?>">
                         <label for="floatingDesc">Description</label>
                     </div>
 
